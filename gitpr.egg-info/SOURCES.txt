@@ -1,0 +1,7 @@
+README.md
+gitpr
+setup.py
+gitpr.egg-info/PKG-INFO
+gitpr.egg-info/SOURCES.txt
+gitpr.egg-info/dependency_links.txt
+gitpr.egg-info/top_level.txt

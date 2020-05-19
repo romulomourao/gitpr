@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: gitpr
+Version: 0.1
+Summary: Github PR Utility
+Home-page: https://github.com/romulomourao/gitpr
+Author: Romulo Mourão
+Author-email: romulo.dam@gmail.com
+License: UNKNOWN
+Description: # Gitpr
+        
+        - This package open the github's comparison page between current branch and the target branch.
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Development Status :: 3 - Alpha
+Description-Content-Type: text/markdown
