@@ -4,7 +4,7 @@ Module Docstring
 """
 
 __author__ = "Romulo Mourão"
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __license__ = "MIT"
 
 import os
@@ -23,7 +23,7 @@ def main(args):
     user = match.group(4)
     repo = match.group(5)
 
-    link = "https://github.com/{}/{}/compare/{}...{}".format(user, repo, sys.argv[1], current_branch.strip())
+    link = "https://github.com/{}/{}/compare/{}...{}".format(user, repo, args.target.strip(), current_branch.strip())
     webbrowser.open(link)
 
 if __name__ == "__main__":
