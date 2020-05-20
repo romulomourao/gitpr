@@ -5,8 +5,8 @@ import re
 import webbrowser
 import sys
 
-current_branch = os.popen("git symbolic-ref --short HEAD").read()
-remote = os.popen('git config --get remote.origin.url').read()
+current_branch = os.popen("git symbolic-ref --short HEAD").read().strip()
+remote = os.popen('git config --get remote.origin.url').read().strip()
 query = r'^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$'
 match = re.search(query, remote)
 user = match.group(4)
@@ -15,4 +15,3 @@ repo = match.group(5)
 link = "https://github.com/{}/{}/compare/{}...{}".format(user, repo, sys.argv[1], current_branch)
 
 webbrowser.open(link)
-
