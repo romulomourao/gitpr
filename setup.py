@@ -3,7 +3,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setuptools.setup(
      name='gitpr',
-     version='0.1',
+     version='0.2',
      scripts=['gitpr'] ,
      author="Romulo Mourão",
      author_email="romulo.dam@gmail.com",
