@@ -1,18 +1,35 @@
 #!python
+"""
+Module Docstring
+"""
+
+__author__ = "Romulo Mourão"
+__version__ = "0.2.1"
+__license__ = "MIT"
 
 import os
+import argparse
 import re
 import webbrowser
 import sys
 
-current_branch = os.popen("git symbolic-ref --short HEAD").read()
-remote = os.popen('git config --get remote.origin.url').read()
-query = r'^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$'
-match = re.search(query, remote)
-user = match.group(4)
-repo = match.group(5)
+def main(args):
+    current_branch = os.popen("git symbolic-ref --short HEAD").read()
+    if args.b:
+      current_branch = args.b
+    remote = os.popen('git config --get remote.origin.url').read().strip()
+    query = r'^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$'
+    match = re.search(query, remote)
+    user = match.group(4)
+    repo = match.group(5)
 
-link = "https://github.com/{}/{}/compare/{}...{}".format(user, repo, sys.argv[1], current_branch)
+    link = "https://github.com/{}/{}/compare/{}...{}".format(user, repo, sys.argv[1], current_branch.strip())
+    webbrowser.open(link)
 
-webbrowser.open(link)
-
+if __name__ == "__main__":
+    """ This is executed when run from the command line """
+    parser = argparse.ArgumentParser(description='Open Github comparison page between target and current branch')
+    parser.add_argument('target', metavar='<target_branch>', type=str, help='target branch')
+    parser.add_argument('-b', type=str, help='any branch name')
+    args = parser.parse_args()
+    main(args)
