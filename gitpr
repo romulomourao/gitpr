@@ -17,13 +17,13 @@ def main(args):
     current_branch = os.popen("git symbolic-ref --short HEAD").read()
     if args.b:
       current_branch = args.b
-    remote = os.popen('git config --get remote.origin.url').read()
+    remote = os.popen('git config --get remote.origin.url').read().strip()
     query = r'^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$'
     match = re.search(query, remote)
     user = match.group(4)
     repo = match.group(5)
 
-    link = "https://github.com/{}/{}/compare/{}...{}".format(user, repo, sys.argv[1], current_branch)
+    link = "https://github.com/{}/{}/compare/{}...{}".format(user, repo, sys.argv[1], current_branch.strip())
     webbrowser.open(link)
 
 if __name__ == "__main__":
